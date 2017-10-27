@@ -1,0 +1,47 @@
+<h2>Tasks To Do 
+	<span ng-class='vm.weightOfIncomplete()'>{{vm.getTotalIncomplete()}}</span>
+</h2>
+<table ng-hide='vm.selected'>
+	<thead>
+		<tr>
+			<th>Task</th>
+			<th>Description</th>
+			<th>Mark</th>
+			<th>Completed</th>
+			<th>Display</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in vm.list | incomplete:vm.showComplete | orderBy:'id'">
+			<td ng-class="item.completed ? 'complete' : 'normal' ">{{item.task}}</td>
+			<td ng-class="item.completed ? 'complete' : 'normal' ">{{item.description}}</td>
+			<td><input type='checkbox' id='mycheck' ng-model='item.completed' ng-change="vm.updateTodo(item)"></td>
+			<td ng-class="item.completed ? 'complete' : 'normal' ">{{item.completed}}</td>
+			<td><input type='submit' name='submit' value="Display" ng-click='vm.displayTodo(item)' /></td>
+			<td><input type='submit' id='delete' value="X" ng-click='vm.deleteTodo(item.id)' /></td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<input type='checkbox' ng-model='vm.showComplete' /><label>Show Completed?</label>
+<hr>
+<form ng-hide='vm.selected'>
+	<input type='text' placeholder='Task' ng-model='new.task'/><br>
+	<input type='text' placeholder='Description' ng-model='new.description'/><br>
+	<input type='submit' name='submit' value='Add Task' ng-click="vm.addTask(new); new = {}"/>
+</form>
+<div ng-show='vm.selected && !vm.editTodo'>
+	<h3>Task: {{vm.selected.task}}</h3>
+	<h3>Desc: {{vm.selected.description}}</h3>
+	<h3>Complete: {{vm.selected.completed}}</h3>
+	<input type='submit' name='sumbit' value='Edit' ng-click='vm.setEditTodo()' />
+	<input type='submit' name='sumbit' value='Go Back' ng-click='vm.displayTable()' />
+</div>
+<form ng-show='vm.editTodo'>
+	Task: <input type='text' ng-model='vm.editTodo.task'/><br>
+	Description: <input type='text' ng-model='vm.editTodo.description'/><br>
+	Completed? <input type='checkbox' ng-model='vm.editTodo.completed'/><br>
+	<input type='submit' name='submit' value='Save' ng-click='vm.updateTodo(vm.editTodo)'/>
+	<input type='submit' name='submit' value='Cancel' ng-click='vm.cancelEdit()'/>
+</form>

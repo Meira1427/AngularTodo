@@ -1,0 +1,85 @@
+body {
+	/* background-color: #AEC9A5; */
+	background-image: url("http://streaming.yayimages.com/images/photographer/subbotina-anna/5158aa4c9ce1ff56179da534276185dd/beautiful-abstract-shiny-background.jpg");
+	background-location: top center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#main {
+	background-color: #7bb9de;
+	border: 3px solid #0e107f;
+	font-family: monospace;
+	color: #050632;
+	width: 50%;
+	padding: 3%;
+	margin: 10% 22%;
+}
+
+h1, h2 {
+	text-align: center;
+	line-height: .3;
+}
+
+table {
+	width: 100%;
+}
+
+td, th {
+	text-align: center;
+}
+
+th {
+	border-bottom: 2px solid #0e107f;
+}
+
+hr {
+	margin: 5% 0;
+}
+
+#delete {
+	background-color: red;
+	color: black;
+	width: 15px;
+	height: 18px;
+	text-align: center;
+	vertical-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+input#mycheck {
+	background-color: #9d9dde;
+	zoom: 1.5;
+}
+
+.good { /* purple */
+	background-color: #8788BF;
+	padding: 1% 2%;
+	border-radius: 10%;
+}
+
+.verygood { /* green */
+	background-color: #87BFA2;
+	padding: 1% 2%;
+	border-radius: 10%;
+}
+
+.warning { /* pinkish-red */
+	background-color: #BF87A4;
+	padding: 1% 2%;
+	border-radius: 10%;
+}
+
+.complete {
+	color: darkslategray;
+	text-decoration: line-through;
+}
+
+.normal {
+	color: black;
+	text-decoration: none;
+}
+
+
+
