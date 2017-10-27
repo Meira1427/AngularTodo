@@ -3,20 +3,29 @@
 <head>
   <title>To Do Project</title>
   <link rel="stylesheet" href="css/stylesheet.css" />
+  <!-- Angular and Routing Module -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
+ <!--  modules, services filters, components -->
   <script src="app/appModule/app.module.js"></script>
   <script src="app/appModule/todo.service.js"></script>
   <script src="app/appModule/incomplete.filter.js"></script>
-  <script src="app/appModule/helloWorld/helloWorld.component.js"></script>
+  <script src="app/appModule/navigation/navigation.component.js"></script>
+  <script src="app/appModule/about/about.component.js"></script>
+  <script src="app/appModule/contact/contact.component.js"></script>
+  <script src="app/appModule/home/home.component.js"></script>
   <script src="app/appModule/todoList/todoList.component.js"></script>
+  <script src="app/appModule/notFound/notFound.component.js"></script>
   <link rel="icon"
   		type="image/png"
       	ng-href="check.png" />
 </head>
 <body>
+	<div id='navbar'>
+		<navigation></navigation>
+	</div>
 	<div id='main'>
-	  <hello-world>Loading. . .</hello-world>
-	  <todo>Loading todo. . .</todo>
+	  <ng-view></ng-view>
 	</div>
 </body>
 </html>

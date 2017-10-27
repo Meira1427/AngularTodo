@@ -1,7 +1,7 @@
 angular.module('todoModule')
 	.component('todo', {
 		templateUrl: 'app/appModule/todoList/todoList.component.html',
-		controller: function(todoService, $filter){
+		controller: function(todoService, $filter, $location, $routeParams){
 			var vm = this;
 			
 			vm.selected = null;
@@ -14,6 +14,19 @@ angular.module('todoModule')
 				.then(function(res){
 					console.log(res.data);
 					vm.list = res.data;
+					if (parseInt($routeParams.id)) {
+						var num = $routeParams.id;
+						var found = false;
+						vm.list.forEach(function(item, index, arr){
+							if(item.id == num) {
+								vm.selected = item;
+								found = true;
+							}
+							if(!found) {
+								$location.path('/notfound')
+							}
+						});
+					}
 				})
 				.catch(function(err){
 					console.log(error);
@@ -55,6 +68,7 @@ angular.module('todoModule')
 			}
 			
 			vm.displayTable = function() {
+				$location.path('/todos');
 				vm.editTodo = null;
 				vm.selected = null;
 			}
