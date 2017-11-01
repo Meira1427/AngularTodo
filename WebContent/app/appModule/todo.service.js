@@ -1,25 +1,53 @@
 angular.module('todoModule')
-	.factory('todoService', function($http, $filter){
+	.factory('todoService', function($http, $filter, $cookies, $location, $rootScope, authService){
 		var service = {};
 		
+		var checkLogin = function(){
+			var userIdPass = authService.getToken();
+			if(userIdPass == null) {
+				return null;
+			}
+			else {
+				return userIdPass.id;
+			}
+		};
+		
 		service.index = function(){
-			return $http({
-				method : 'GET',
-				url : 'api/users/1/todos'
-			})
+			var uid = checkLogin();
+			if(isNaN(uid)) {
+				$location.path('/login');
+			}
+			else {
+				return $http({
+					method : 'GET',
+					url : 'api/users/' + uid + '/todos'
+				})
+			}
 		};
 		
 		service.create = function(task) {
 			console.log(task);
 			task.completed = false;
-			return $http({
-				method : 'POST',
-				url : 'api/users/1/todos',
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				data : task
-			})
+			var uid = checkLogin();
+			if(isNaN(uid)) {
+				$location.path('/login');
+			}
+			else {
+				return $http({
+					method : 'POST',
+					url : 'api/users/' + uid + '/todos',
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					data : task
+				})
+				.then(function(resp){
+					$rootScope.$broadcast('newItem', {
+						task : resp.data
+					});
+					return resp;
+				}) 
+			}
 		}
 	
 		service.update = function(task) {
@@ -34,22 +62,33 @@ angular.module('todoModule')
 				task.completeDate = '';
 			}
 			var tid = task.id;
-			return $http({
-				method : 'PUT',
-				url : 'api/users/1/todos/' + tid,
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				data : task
-			})
+			var uid = checkLogin();
+			if(isNaN(uid)) {
+				$location.path('/login');
+			}
+			else {
+				return $http({
+					method : 'PUT',
+					url : 'api/users/' + uid + '/todos/' + tid,
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					data : task
+				})
+			}
 		}
 		
 		service.destroy = function(id) {
-			console.log("id is: " + id);
-			return $http({
-				method : 'DELETE',
-				url : 'api/users/1/todos/' + id
-			})
+			var uid = checkLogin();
+			if(isNaN(uid)) {
+				$location.path('/login');
+			}
+			else {
+				return $http({
+					method : 'DELETE',
+					url : 'api/users/' + uid + '/todos/' + id
+				})
+			}
 		}
 		
 		return service;

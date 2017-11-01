@@ -81,5 +81,44 @@ input#mycheck {
 	text-decoration: none;
 }
 
+.home-button {
+	margin-top: 5%;
+	font-size: 1.5em;
+	font-family: cursive;
+	display: block;
+	margin: 0 auto;
+}
+
+#rightbar {
+	margin-top: 0;
+	margin-right: 3%;
+	display: inline;
+	float: right;
+	font-size: 1.5em;
+}
+
+#leftbar {
+	margin-top: 0;
+	display: inline;
+	float: left;
+	font-size: 1.5em;
+}
+
+#nowrap {
+	clear: both;
+}
+
+#navbar {
+	background-color: #04043a;
+	width: 100%;
+	padding: 1%;
+	left: 0;
+	right: 0;
+	top: 0;
+	position: fixed;
+}
+
+
+
 
 

@@ -1,4 +1,4 @@
-angular.module('todoModule', ['ngRoute'])
+angular.module('todoModule', ['ngRoute', 'ngCookies', 'authModule'])
 .config(function($routeProvider){
 	$routeProvider
 	.when('/', {
@@ -18,6 +18,12 @@ angular.module('todoModule', ['ngRoute'])
 	})
 	.when('/contact', {
 		template: '<contact></contact>'
+	})
+	.when('/register', {
+		template: '<register></register>'
+	})
+	.when('/login', {
+		template: '<login></login>'
 	})
 	.when('/notfound', {
 		template: '<not-found></not-found>'

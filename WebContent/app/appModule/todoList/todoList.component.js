@@ -1,13 +1,18 @@
 angular.module('todoModule')
 	.component('todo', {
 		templateUrl: 'app/appModule/todoList/todoList.component.html',
-		controller: function(todoService, $filter, $location, $routeParams){
+		controller: function(todoService, $filter, $location, $scope, $routeParams){
 			var vm = this;
 			
 			vm.selected = null;
 			vm.editTodo = null;
 			
 			vm.list = [];
+			
+			$scope.$on('newItem', function(e, data){
+				console.log("My listening event");
+				console.log(data);
+			});
 			
 			var getAll = function(){
 				todoService.index()
@@ -28,7 +33,7 @@ angular.module('todoModule')
 						});
 					}
 				})
-				.catch(function(err){
+				.catch(function(error){
 					console.log(error);
 				});
 			}

@@ -3,12 +3,15 @@
 <head>
   <title>To Do Project</title>
   <link rel="stylesheet" href="css/stylesheet.css" />
-  <!-- Angular and Routing Module -->
+  <!-- Angular and Routing Module and Cookies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
   <script src= "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
- <!--  modules, services filters, components -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-cookies.min.js"></script>
+ <!--  modules, services, filters, components -->
+  <script src="app/authModule/auth.module.js"></script>
   <script src="app/appModule/app.module.js"></script>
   <script src="app/appModule/todo.service.js"></script>
+  <script src="app/authModule/auth.service.js"></script>
   <script src="app/appModule/incomplete.filter.js"></script>
   <script src="app/appModule/navigation/navigation.component.js"></script>
   <script src="app/appModule/about/about.component.js"></script>
@@ -16,6 +19,9 @@
   <script src="app/appModule/home/home.component.js"></script>
   <script src="app/appModule/todoList/todoList.component.js"></script>
   <script src="app/appModule/notFound/notFound.component.js"></script>
+  <script src="app/authModule/login/login.component.js"></script>
+  <script src="app/authModule/register/register.component.js"></script>
+  <script src="app/authModule/logout/logout.component.js"></script>
   <link rel="icon"
   		type="image/png"
       	ng-href="check.png" />
